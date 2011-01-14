@@ -1,0 +1,24 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/> 
+    <title>Retwis - Example Twitter clone based on the Redis Key-Value DB</title>
+    <link rel="stylesheet" href="{{ static_url("style.css") }}" type="text/css"/>        
+  </head>
+  <body>
+    <div id="page">
+        <div id="header">
+            <a href="/"><img style="border:none" src="{{ static_url("logo.png") }}" width="192" height="85" alt="Retwis"></a>
+            <div id="navbar">
+              <a href="/home">home</a>
+              | <a href="/timeline">timeline</a>              
+              {% if current_user %}
+              | <a href="/logout">logout</a>
+              {% end %}
+            </div>            
+        </div>
+        {% block body %}{% end %}
+        <div id="footer">Retwis is a very simple Twitter clone written in Python (Tornado) as example application of the <a href="http://code.google.com/p/redis/">Redis key-value database</a></div>
+    </div>    
+  </body>
+</html>

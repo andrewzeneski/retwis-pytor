@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block body %}
+    <div id="postform">
+        <form method="POST" action="/post">
+            {{current_user['username']}}, what you are doing?
+            {{ xsrf_form_html() }}
+            <br>
+            <table>
+                <tr><td><textarea cols="70" rows="3" name="status"></textarea></td></tr>
+                <tr><td align="right"><input type="submit" name="doit" value="Update"></td></tr>
+            </table>
+        </form>
+        <div id="homeinfobox">
+            {{followers}} followers<br>
+            {{following}} following<br>        
+        </div>
+    </div>
+    {% for post in posts %}
+        {{ modules.Post(post, client) }}
+    {% end %}
+{% end %}

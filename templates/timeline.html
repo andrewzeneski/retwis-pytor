@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block body %}
+    <h2>Timeline</h2>
+    <i>Latest registered users (an example of SORT command!)</i><br/>
+    
+    <div>
+        {% for user in users %}
+            <a class="username" href="/profile?u={{user}}">{{user}}</a>
+        {% end %}
+    </div>
+    <br/>
+    <i>Latest 50 messages from users aroud the world!</i><br/>
+    {% for post in posts %}
+        {{ modules.Post(post, client) }}
+    {% end %}
+{% end %}

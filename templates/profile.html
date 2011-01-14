@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block body %}
+    <h2 class="username">{{member_name}}</h2>
+    {% if current_user and current_user['user_id'] != member_id %}
+        {% if not is_following %}
+            <a href="/follow?uid={{member_id}}&f=1" class="button">Follow this user</a>
+        {% else %}
+            <a href="/follow?uid={{member_id}}&f=0" class="button">Stop following</a>
+        {% end %}        
+    {% end %}
+    
+    {% for post in posts %}
+        {{ modules.Post(post, client) }}
+    {% end %}
+{% end %}
